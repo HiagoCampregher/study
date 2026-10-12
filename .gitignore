@@ -1,0 +1,10 @@
+.DS_Store
+
+# Binaries and test output
+bin/
+coverage.out
+
+# Local databases
+*.sqlite
+*.sqlite3
+*.db

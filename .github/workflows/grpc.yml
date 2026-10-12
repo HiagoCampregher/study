@@ -1,0 +1,29 @@
+name: gRPC
+
+on:
+  push:
+    paths:
+      - "grpc/**"
+      - ".github/workflows/grpc.yml"
+  pull_request:
+    paths:
+      - "grpc/**"
+      - ".github/workflows/grpc.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: grpc
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: grpc/go.mod
+          cache-dependency-path: grpc/go.sum
+      - run: go test ./...
